@@ -54,6 +54,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 
     function createFile() {
+        alert('called')
         var type = window.TEMPORARY;
         var size = 5 * 1024 * 1024;
         window.requestFileSystem(type, size, successCallback, errorCallback)
