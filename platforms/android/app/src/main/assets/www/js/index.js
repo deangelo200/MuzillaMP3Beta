@@ -27,13 +27,17 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function () {
+
         this.receivedEvent('deviceready');
-        window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (fs) {
+        
+        function createFile(){
+            
+            alert(cordova.file);
+            
+            
+        }
+        document.getElementById("createFile").addEventListener("click", createFile);
 
-            console.log('file system open: ' + fs.name);
-            createFile(fs.root, "newTempFile.txt", false);
-
-        }, onErrorLoadFs);
     },
 
     // Update DOM on a Received Event
@@ -50,3 +54,7 @@ var app = {
 };
 
 app.initialize();
+
+
+
+
