@@ -24,8 +24,7 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
-    <engine name="android" spec="~7.1.4" />
     <preference name="AndroidPersistentFileLocation" value="Internal" />
-
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <engine name="android" spec="~6.3.0" />
 </widget>
