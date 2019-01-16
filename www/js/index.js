@@ -28,12 +28,26 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function () {
         this.receivedEvent('deviceready');
-        window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (fs) {
 
-            console.log('file system open: ' + fs.name);
-            createFile(fs.root, "newTempFile.txt", false);
+        function createFile() {
+            var type = window.TEMPORARY;
+            var size = 5 * 1024 * 1024;
+            window.requestFileSystem(type, size, successCallback, errorCallback)
 
-        }, onErrorLoadFs);
+            function successCallback(fs) {
+                fs.root.getFile('log.txt', {
+                    create: true,
+                    exclusive: true
+                }, function (fileEntry) {
+                    alert('File creation successfull!')
+                }, errorCallback);
+            }
+
+            function errorCallback(error) {
+                alert("ERROR: " + error.code)
+            }
+
+        }
     },
 
     // Update DOM on a Received Event
