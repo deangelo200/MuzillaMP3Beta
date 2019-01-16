@@ -27,6 +27,7 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function () {
+        document.getElementById("createFile").addEventListener("click", createFile);
         this.receivedEvent('deviceready');
 
         function createFile() {
