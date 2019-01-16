@@ -27,28 +27,9 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function () {
-        document.getElementById("createFile").addEventListener("click", createFile);
+
         this.receivedEvent('deviceready');
 
-        function createFile() {
-            var type = window.TEMPORARY;
-            var size = 5 * 1024 * 1024;
-            window.requestFileSystem(type, size, successCallback, errorCallback)
-
-            function successCallback(fs) {
-                fs.root.getFile('log.txt', {
-                    create: true,
-                    exclusive: true
-                }, function (fileEntry) {
-                    alert('File creation successfull!')
-                }, errorCallback);
-            }
-
-            function errorCallback(error) {
-                alert("ERROR: " + error.code)
-            }
-
-        }
     },
 
     // Update DOM on a Received Event
@@ -65,3 +46,19 @@ var app = {
 };
 
 app.initialize();
+
+
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    alert("testing")
+    var createDirectoryFS = function (fileSystem) {
+        fileSystem.root.getDirectory("Folder_Name", {
+            create: true
+        }, localStorageGetFS);
+    };
+    document.getElementById("createFile").addEventListener("click", createFile);
+
+
+}
